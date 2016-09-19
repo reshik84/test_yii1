@@ -1,0 +1,73 @@
+2016/09/19 17:14:00 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: could not find driver in /home/resh/projects/yii1/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/resh/projects/yii1/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/resh/projects/yii1/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/resh/projects/yii1/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(472): CModule->getComponent('db')
+#4 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(481): MigrateCommand->getDbConnection()
+#5 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(512): MigrateCommand->getMigrationHistory(-1)
+#6 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 [internal function]: MigrateCommand->actionUp(Array)
+#8 /home/resh/projects/yii1/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#9 /home/resh/projects/yii1/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#10 /home/resh/projects/yii1/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#11 /home/resh/projects/yii1/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#12 /home/resh/projects/yii1/framework/yiic.php(33): CApplication->run()
+#13 /home/resh/projects/yii1/testapp/protected/yiic.php(7): require_once('/home/resh/proj...')
+#14 /home/resh/projects/yii1/testapp/protected/yiic(4): require_once('/home/resh/proj...')
+#15 {main}
+---
+2016/09/19 17:14:48 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'testdb' in /home/resh/projects/yii1/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /home/resh/projects/yii1/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /home/resh/projects/yii1/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /home/resh/projects/yii1/framework/base/CModule.php(394): CDbConnection->init()
+#3 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(472): CModule->getComponent('db')
+#4 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(481): MigrateCommand->getDbConnection()
+#5 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(512): MigrateCommand->getMigrationHistory(-1)
+#6 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 [internal function]: MigrateCommand->actionUp(Array)
+#8 /home/resh/projects/yii1/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#9 /home/resh/projects/yii1/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#10 /home/resh/projects/yii1/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#11 /home/resh/projects/yii1/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#12 /home/resh/projects/yii1/framework/yiic.php(33): CApplication->run()
+#13 /home/resh/projects/yii1/testapp/protected/yiic.php(7): require_once('/home/resh/proj...')
+#14 /home/resh/projects/yii1/testapp/protected/yiic(4): require_once('/home/resh/proj...')
+#15 {main}
+---
+2016/09/19 17:15:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'testdb.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2016/09/19 17:18:16 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'string(255),
+	`email` string(255),
+	`message` text
+)' at line 3. The SQL statement executed was: CREATE TABLE `feedback` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` string(255),
+	`email` string(255),
+	`message` text
+).
+2016/09/19 17:18:16 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'string(255),
+	`email` string(255),
+	`message` text
+)' at line 3. The SQL statement executed was: CREATE TABLE `feedback` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` string(255),
+	`email` string(255),
+	`message` text
+) in /home/resh/projects/yii1/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/resh/projects/yii1/framework/db/CDbCommand.php(1352): CDbCommand->execute()
+#1 /home/resh/projects/yii1/framework/db/CDbMigration.php(250): CDbCommand->createTable('feedback', Array, NULL)
+#2 /home/resh/projects/yii1/testapp/protected/migrations/m160919_141541_feedback.php(8): CDbMigration->createTable('feedback', Array)
+#3 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(415): m160919_141541_feedback->up()
+#4 /home/resh/projects/yii1/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m160919_141541_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 /home/resh/projects/yii1/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 /home/resh/projects/yii1/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 /home/resh/projects/yii1/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 /home/resh/projects/yii1/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#10 /home/resh/projects/yii1/framework/yiic.php(33): CApplication->run()
+#11 /home/resh/projects/yii1/testapp/protected/yiic.php(7): require_once('/home/resh/proj...')
+#12 /home/resh/projects/yii1/testapp/protected/yiic(4): require_once('/home/resh/proj...')
+#13 {main}
+---
